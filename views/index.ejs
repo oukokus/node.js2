@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>商品レビューページ</title>
+        <link type="text/css" rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <table id="table">
+            <h1>商品レビュー</h1>
+            <tr class="trClass">
+                <th>id</th>
+                <th>名前</th>
+                <th>年齢</th>
+                <th>評価</th>
+                <th>コメント</th>
+            </tr>
+            <!--実務課題2-->
+            <% for (let a=0; a <users.length; a++) { %>
+                <tr>
+                    <td class="id"><%- users[a].id %></td>
+                    <td class="username"><%- users[a].username %></td>
+                    <td class="age"><%- users[a].age %></td>
+                    <td class="rating"><%- users[a].rating %></td>
+                    <td class="reason"><%- users[a].reason %></td>
+                </tr>
+                <% } %>
+
+        </table>
+
+        <script type="text/javascript">
+
+ 
+
+        </script>
+    </body>
+</html>

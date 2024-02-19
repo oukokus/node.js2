@@ -1,0 +1,26 @@
+@charset "UTF-8";
+#table{
+  border-collapse:  collapse; 
+  margin-bottom: 60px;
+ margin-left: 60px;
+}
+h1{
+   padding-left: 60px;
+}
+tr,th,td{
+  border: 1px solid;
+  padding: 5px;
+
+}
+.trClass{
+
+  background-color: orange;
+
+}
+.id,.username,.age,.rating{
+  text-align: center;
+}
+
+#formId{
+  margin: 10px;
+}

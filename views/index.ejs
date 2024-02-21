@@ -15,12 +15,22 @@
                 <th>評価</th>
                 <th>コメント</th>
             </tr>
-            <select name="select">
-                <option value="high">評価が高い順</option>
-                <option value="low">評価が低い順</option>
-            </select>
-            <p id><input type="button" onclick="btnClick()" value="ソート"></p>
-            <!--課題01-->
+<!--課題02-->
+<select name="select">
+    <option value="high">評価が高い順</option>
+    <option value="low">評価が低い順</option>
+</select>
+<p><input type="button" onclick="btnClick()" value="ソート"></p>
+<!--課題03-->
+<select name="select">
+    <option value="opt5">評価5</option>
+    <option value="opt4">評価4</option>
+    <option value="opt3">評価3</option>
+    <option value="opt2">評価2</option>
+    <option value="opt1">評価1</option>
+</select>
+<p><input type="button" onclick="btnClick02()" value="ソート"></p>
+            <!--課題01  ブラウザに出力-->
             <% for (let i=0; i <users.length; i++) { %>
                 <tr class="trclass">
                     <td class="id"><%- users[i].id %></td>
@@ -35,7 +45,7 @@
 </html>
 
 <script type="text/javascript">
-    //課題02
+//課題02 評価値のソート機能
     let userList = JSON.parse('<%= JSON.stringify(users) %>'.replace(/&#34;/g, '"'));
     console.log(userList[0].rating)
     function btnClick() {
@@ -90,4 +100,10 @@
                 "</tr>";
         }
     };
+
+//課題03 評価値の絞り込み機能
+
+
+
+
 </script>

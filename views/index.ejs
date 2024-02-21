@@ -29,7 +29,7 @@
                 <option value="opt2">評価2</option>
                 <option value="opt1">評価1</option>
             </select>
-            <p><input type="button" onclick="btnClick02()" value="ソート"></p>
+            <p><input type="button" onclick="btnClick02()" value="評価を絞り込む"></p>
             <!--課題01  ブラウザに出力-->
             <% for (let i=0; i <users.length; i++) { %>
                 <tr class="trclass">
@@ -43,7 +43,6 @@
         </table>
     </body>
 </html>
-
 <script type="text/javascript">
     //課題02 評価値のソート機能
     let userList = JSON.parse('<%= JSON.stringify(users) %>'.replace(/&#34;/g, '"'));
@@ -109,12 +108,34 @@
                     getTR[i].style.display = "none";
                 }
             }
+            else if (selectRating.selectedIndex == 1) {
+                if (userList[i].rating == 4) {
+                    getTR[i].style.display = "";
+                } else {
+                    getTR[i].style.display = "none";
+                }
+            }
+            else if (selectRating.selectedIndex == 2) {
+                if (userList[i].rating == 3) {
+                    getTR[i].style.display = "";
+                } else {
+                    getTR[i].style.display = "none";
+                }
+            }
+            else if (selectRating.selectedIndex == 3) {
+                if (userList[i].rating == 2) {
+                    getTR[i].style.display = "";
+                } else {
+                    getTR[i].style.display = "none";
+                }
+            }
+            else if (selectRating.selectedIndex == 4) {
+                if (userList[i].rating == 1) {
+                    getTR[i].style.display = "";
+                } else {
+                    getTR[i].style.display = "none";
+                }
+            }
         }
     }
-
-
-
-
-
-
 </script>

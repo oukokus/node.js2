@@ -24,3 +24,14 @@ tr,th,td{
 #formId{
   margin: 10px;
 }
+
+
+#graph{
+  border-collapse:  collapse; 
+  margin-bottom: 30px;
+ margin-left: 30px;
+
+}
+#graphTr{
+  background-color: yellow;
+}

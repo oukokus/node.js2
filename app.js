@@ -43,7 +43,9 @@ app.use(express.static('assets'));
   con.query(sql, function (err, result, fields) {
     if (err) throw err;
     res.render('index', {
+      
       users: result,
+
       // ⓵ こちらはapp.jsで宣言した変数をindex.ejsのscriptタグ内で使用するために登録する場所になっています。
       /*
         指定の仕方はオブジェクトの考え方と同じで、プロパティ名: 値の形になります。値の部分は変数名を入れるようにして下さい。

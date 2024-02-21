@@ -15,23 +15,79 @@
                 <th>評価</th>
                 <th>コメント</th>
             </tr>
-            <!--実務課題2-->
-            <% for (let a=0; a <users.length; a++) { %>
-                <tr>
-                    <td class="id"><%- users[a].id %></td>
-                    <td class="username"><%- users[a].username %></td>
-                    <td class="age"><%- users[a].age %></td>
-                    <td class="rating"><%- users[a].rating %></td>
-                    <td class="reason"><%- users[a].reason %></td>
+            <select name="select">
+                <option value="high">評価が高い順</option>
+                <option value="low">評価が低い順</option>
+            </select>
+            <p id><input type="button" onclick="btnClick()" value="ソート"></p>
+            <!--課題01-->
+            <% for (let i=0; i <users.length; i++) { %>
+                <tr class="trclass">
+                    <td class="id"><%- users[i].id %></td>
+                    <td class="username"><%- users[i].username %></td>
+                    <td class="age"><%- users[i].age %></td>
+                    <td class="rating"><%- users[i].rating %></td>
+                    <td class="reason"><%- users[i].reason %></td>
                 </tr>
                 <% } %>
-
         </table>
-
-        <script type="text/javascript">
-
- 
-
-        </script>
     </body>
 </html>
+
+<script type="text/javascript">
+    //課題02
+    let userList = JSON.parse('<%= JSON.stringify(users) %>'.replace(/&#34;/g, '"'));
+    console.log(userList[0].rating)
+    function btnClick() {
+        let select = document.querySelector('[name="select"]');
+        select.onchange
+        if (select.selectedIndex == 0) {
+            userList.sort(function (a, b) {
+                if (a.rating < b.rating) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+
+            })
+            console.log(userList);
+        } else if (select.selectedIndex == 1) {
+            userList.sort(function (a, b) {
+                if (a.rating > b.rating) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            })
+            console.log(userList);
+        }
+        let getTR = document.getElementsByClassName("trclass")
+        let getTable = document.getElementById("table");
+        let tableRows = getTable.rows.length;
+        for (let i = 0; i < userList.length; i++) {
+            let id = userList[i].id;
+            let username = userList[i].username
+            let age = userList[i].age
+            let rating = userList[i].rating
+            let reason = userList[i].reason
+            getTR[i].innerHTML =
+                "<tr>" +
+                "<td class='id'>" +
+                id +
+                "</td>" +
+                "<td class='username'>" +
+                username +
+                "</td>" +
+                "<td class='age'>" +
+                age +
+                "</td>" +
+                "<td class='rating'>" +
+                rating +
+                "</td>" +
+                "<td class='reason'>" +
+                reason +
+                "</td>" +
+                "</tr>";
+        }
+    };
+</script>

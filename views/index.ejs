@@ -15,21 +15,21 @@
                 <th>評価</th>
                 <th>コメント</th>
             </tr>
-<!--課題02-->
-<select name="select">
-    <option value="high">評価が高い順</option>
-    <option value="low">評価が低い順</option>
-</select>
-<p><input type="button" onclick="btnClick()" value="ソート"></p>
-<!--課題03-->
-<select name="select">
-    <option value="opt5">評価5</option>
-    <option value="opt4">評価4</option>
-    <option value="opt3">評価3</option>
-    <option value="opt2">評価2</option>
-    <option value="opt1">評価1</option>
-</select>
-<p><input type="button" onclick="btnClick02()" value="ソート"></p>
+            <!--課題02-->
+            <select name="select">
+                <option value="high">評価が高い順</option>
+                <option value="low">評価が低い順</option>
+            </select>
+            <p><input type="button" onclick="btnClick()" value="ソート"></p>
+            <!--課題03-->
+            <select name="selectRating">
+                <option value="opt5">評価5</option>
+                <option value="opt4">評価4</option>
+                <option value="opt3">評価3</option>
+                <option value="opt2">評価2</option>
+                <option value="opt1">評価1</option>
+            </select>
+            <p><input type="button" onclick="btnClick02()" value="ソート"></p>
             <!--課題01  ブラウザに出力-->
             <% for (let i=0; i <users.length; i++) { %>
                 <tr class="trclass">
@@ -45,9 +45,11 @@
 </html>
 
 <script type="text/javascript">
-//課題02 評価値のソート機能
+    //課題02 評価値のソート機能
     let userList = JSON.parse('<%= JSON.stringify(users) %>'.replace(/&#34;/g, '"'));
-    console.log(userList[0].rating)
+    let getTR = document.getElementsByClassName("trclass")
+    let getTable = document.getElementById("table");
+    let tableRows = getTable.rows.length;
     function btnClick() {
         let select = document.querySelector('[name="select"]');
         select.onchange
@@ -58,9 +60,7 @@
                 } else {
                     return -1;
                 }
-
             })
-            console.log(userList);
         } else if (select.selectedIndex == 1) {
             userList.sort(function (a, b) {
                 if (a.rating > b.rating) {
@@ -69,11 +69,7 @@
                     return -1;
                 }
             })
-            console.log(userList);
         }
-        let getTR = document.getElementsByClassName("trclass")
-        let getTable = document.getElementById("table");
-        let tableRows = getTable.rows.length;
         for (let i = 0; i < userList.length; i++) {
             let id = userList[i].id;
             let username = userList[i].username
@@ -101,7 +97,22 @@
         }
     };
 
-//課題03 評価値の絞り込み機能
+    //課題03 評価値の絞り込み機能
+    function btnClick02() {
+        let selectRating = document.querySelector('[name="selectRating"]');
+        selectRating.onchange
+        for (i = 0; i < userList.length; i++) {
+            if (selectRating.selectedIndex == 0) {
+                if (userList[i].rating == 5) {
+                    getTR[i].style.display = "";
+                } else {
+                    getTR[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+
 
 
 

@@ -42,6 +42,12 @@ margin-bottom: 60px;
 margin-left: 60px;
   display: flex;
 
-  
-;
+}
+
+#newData{
+  padding-left: 60px;
+}
+
+h2{
+  margin-top: 0;
 }

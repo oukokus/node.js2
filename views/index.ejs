@@ -44,24 +44,28 @@
                     <td id="graphTd40"></td>
                 </tr>
             </table>
- <!--課題05-->
-    <form id="newData" class="formData" >
-        <h2>レビューを入力</h2>
-        <p id="pid1">ユーザー名
+            <!--課題05-->
+            <form id="newData" class="formData">
+                <h2>レビューを入力</h2>
+                <p id="pid1">ユーザー名
     <input id="newname1" type="text" name="newname1"  class="boxColor" placeholder="ユーザー名"></p>
-        <div id="listName1"></div>
-        <p>年齢
+                <div id="listName1"></div>
+                <p>年齢
     <input id="newname2" type="text" name="newname2"   class="boxColor" placeholder="年齢"></p>
-        <div id="listName2"></div>
-        <p>評価
-    <input id="newname3" type="text" name="newname3"  class="boxColor" placeholder="評価"></p>
-        <div id="listName3"></div>
+                <div id="listName2"></div>
+                <p>評価
+            <select name="selectRating" id="newname3" name="newname3"  class="boxColor">
+                <option value="5">評価5</option>
+                <option value="4">評価4</option>
+                <option value="3">評価3</option>
+                <option value="2">評価2</option>
+                <option value="1">評価1</option>
+            </select>
         <p>評価内容</p>
-    <textarea id="newname4" type="textarea" name="newname4"  class="boxColor" placeholder="評価内容"></textarea>
-        <div id="listName4"></div>
-        <p><input type="button" onclick="buttonClick()" value="追加" id="registerBtn"   ></p>
-    </form>
-
+                <textarea id="newname4" type="textarea" name="newname4" class="boxColor" placeholder="評価内容"></textarea>
+                <div id="listName4"></div>
+                <p><input type="button" onclick="buttonClick()" value="追加" id="registerBtn"></p>
+            </form>
         </div>
         <!--課題01  ブラウザに出力-->
         <table id="table">
@@ -197,6 +201,65 @@
         if (userList[i].age >= 40 && userList[i].age <= 49) {
             count3++
             getGraphTd40.innerHTML = count3 + "人"
+        }
+    }
+    //課題05 レビューの新規追加機能
+    function buttonClick() {
+        let getTable = document.getElementById("table");
+        let newRow = getTable.insertRow(-1);
+        let td1 = document.createElement("td");
+        let td2 = document.createElement("td");
+        let td3 = document.createElement("td");
+        let td4 = document.createElement("td");
+        let td5 = document.createElement("td");
+        let newname1 = document.getElementById("newname1").value;
+        let newname2 = document.getElementById("newname2").value;
+        let newname3 = document.getElementById("newname3").value;
+        let newname4 = document.getElementById("newname4").value;
+        let trueFalse = true;
+        let listName1 = document.getElementById("listName1");
+        let listName2 = document.getElementById("listName2");
+        let listName3 = document.getElementById("listName3");
+        let listName4 = document.getElementById("listName4");
+        if (newname1 == "") {
+            listName1.innerHTML = "ユーザー名が未入力です";
+            listName1.style.color = "red";
+            trueFalse = false;
+        } else {
+            td1.innerHTML = getTable.rows.length - 1;
+            newRow.appendChild(td1);
+            newRow.appendChild(td2);
+            listName1.textContent = "";
+            td2.innerHTML = newname1;
+        }
+        if (newname2 == "") {
+            listName2.innerHTML = "年齢が未入力です";
+            listName2.style.color = "red";
+            trueFalse = false;
+        } else if (/^[0-9]*$/.test(newname2)) {
+            newRow.appendChild(td3);
+            listName2.textContent = "";
+            td3.innerHTML = newname2;
+        } else {
+            listName2.innerHTML = "半角数字で入力してください";
+            listName2.style.color = "red";
+            trueFalse = false;
+        }
+        newRow.appendChild(td4);
+        listName4.textContent = "";
+        td4.innerHTML = newname3;
+        if (newname4 == "") {
+            listName4.innerHTML = "評価内容が未入力です";
+            listName4.style.color = "red";
+            trueFalse = false;
+        } else {
+            newRow.appendChild(td5);
+            listName4.textContent = "";
+            td5.innerHTML = newname4;
+        }
+        if (!trueFalse) {
+            console.log("a");
+            getTable.deleteRow(-1);
         }
     }
 </script>

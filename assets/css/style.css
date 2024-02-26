@@ -10,16 +10,14 @@ h1{
 tr,th,td{
   border: 1px solid;
   padding: 5px;
-
+  text-align: center;
 }
 .trClass{
 
   background-color: orange;
 
 }
-.id,.username,.age,.rating{
-  text-align: center;
-}
+
 
 #formId{
   margin: 10px;
@@ -29,6 +27,7 @@ tr,th,td{
 #graph{
   border-collapse:  collapse; 
   margin-left: 60px;
+  height: 200px;
 
 
 }

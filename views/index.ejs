@@ -6,8 +6,47 @@
         <link type="text/css" rel="stylesheet" href="css/style.css">
     </head>
     <body>
+        <h1>商品レビュー</h1>
+        <!--課題02-->
+        <div id="rating-page">
+            <div id="selectBox">
+                <select name="select">
+                    <option value="high">評価が高い順</option>
+                    <option value="low">評価が低い順</option>
+                </select>
+                <p><input type="button" onclick="btnClick()" value="ソート"></p>
+                <!--課題03-->
+                <select name="selectRating">
+                    <option value="opt5">評価5</option>
+                    <option value="opt4">評価4</option>
+                    <option value="opt3">評価3</option>
+                    <option value="opt2">評価2</option>
+                    <option value="opt1">評価1</option>
+                </select>
+                <p><input type="button" onclick="btnClick02()" value="評価を絞り込む"></p>
+            </div>
+            <!--課題04-->
+            <table id="graph">
+                <tr id="graphTr">
+                    <th>年代</th>
+                    <th>人数</th>
+                </tr>
+                <tr id="graphTr20">
+                    <td>20代</td>
+                    <td id="graphTd20"></td>
+                </tr>
+                <tr id="graphTr30">
+                    <td>30代</td>
+                    <td id="graphTd30"></td>
+                </tr>
+                <tr id="graphTr40">
+                    <td>40代</td>
+                    <td id="graphTd40"></td>
+                </tr>
+            </table>
+        </div>
+        <!--課題01  ブラウザに出力-->
         <table id="table">
-            <h1>商品レビュー</h1>
             <tr class="trClass">
                 <th>id</th>
                 <th>名前</th>
@@ -15,22 +54,6 @@
                 <th>評価</th>
                 <th>コメント</th>
             </tr>
-            <!--課題02-->
-            <select name="select">
-                <option value="high">評価が高い順</option>
-                <option value="low">評価が低い順</option>
-            </select>
-            <p><input type="button" onclick="btnClick()" value="ソート"></p>
-            <!--課題03-->
-            <select name="selectRating">
-                <option value="opt5">評価5</option>
-                <option value="opt4">評価4</option>
-                <option value="opt3">評価3</option>
-                <option value="opt2">評価2</option>
-                <option value="opt1">評価1</option>
-            </select>
-            <p><input type="button" onclick="btnClick02()" value="評価を絞り込む"></p>
-            <!--課題01  ブラウザに出力-->
             <% for (let i=0; i <users.length; i++) { %>
                 <tr class="trclass">
                     <td class="id"><%- users[i].id %></td>
@@ -95,7 +118,6 @@
                 "</tr>";
         }
     };
-
     //課題03 評価値の絞り込み機能
     function btnClick02() {
         let selectRating = document.querySelector('[name="selectRating"]');
@@ -136,6 +158,27 @@
                     getTR[i].style.display = "none";
                 }
             }
+        }
+    }
+    //課題04 年代毎のグラフ作成
+    let getGraphTd20 = document.getElementById("graphTd20")
+    let getGraphTd30 = document.getElementById("graphTd30")
+    let getGraphTd40 = document.getElementById("graphTd40")
+    let count1 = 0;
+    let count2 = 0;
+    let count3 = 0;
+    for (i = 0; i < userList.length; i++) {
+        if (userList[i].age >= 20 && userList[i].age <= 29) {
+            count1++
+            getGraphTd20.innerHTML = count1 + "人"
+        }
+        if (userList[i].age >= 30 && userList[i].age <= 39) {
+            count2++
+            getGraphTd30.innerHTML = count2 + "人"
+        }
+        if (userList[i].age >= 40 && userList[i].age <= 49) {
+            count3++
+            getGraphTd40.innerHTML = count3 + "人"
         }
     }
 </script>

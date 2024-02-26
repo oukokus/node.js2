@@ -24,3 +24,24 @@ tr,th,td{
 #formId{
   margin: 10px;
 }
+
+
+#graph{
+  border-collapse:  collapse; 
+  margin-left: 60px;
+
+
+}
+#graphTr{
+  background-color: yellow;
+}
+
+#rating-page {
+width: 640px;
+margin-bottom: 60px;
+margin-left: 60px;
+  display: flex;
+
+  
+;
+}

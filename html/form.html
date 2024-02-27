@@ -8,15 +8,64 @@
     <body>
         <h1>入力フォーム</h1>
         <!--ここに追加-->
-        <form action='/' id="formId" method="POST">
-            <p>name <input type="text" id="nameId" name="name" value=""></p>
-            <p id="nameText"></p>
-            <p>email <input type="email" id="emailId" name="email" value=""></p>
-            <p id="nameText2"></p>
-            <button type="submit" onclick="return btnClick()">送信</button>
+        <form action='/' id="newData" class="formData" method="POST">
+            <h2>レビューを入力</h2>
+            <p id="pid1">ユーザー名 :
+<input id="newname1" type="text" name="username"  placeholder="ユーザー名"></p>
+            <div id="listName1"></div>
+            <p>年齢 : 
+<input id="newname2" type="text" name="age" placeholder="年齢"></p>
+            <div id="listName2"></div>
+            <p>評価 : 
+        <select name="rating" id="" name="rating" >
+            <option value="5">評価5</option>
+            <option value="4">評価4</option>
+            <option value="3">評価3</option>
+            <option value="2">評価2</option>
+            <option value="1">評価1</option>
+        </select></p>
+    <p>評価内容</p>
+            <textarea id="newname4"  type="textarea"    name="reason" class="boxColor" placeholder="評価内容"></textarea>
+            <div id="listName4"></div>
+            <p><button type="submit" onclick="return buttonClick()"  value="追加">追加</p>
         </form>
         <script>
-           
+        function buttonClick() {
+        let getTable = document.getElementById("table");
+        let newRow = getTable.insertRow(-1);
+        let newname1 = document.getElementById("newname1").value;
+        let newname2 = document.getElementById("newname2").value;
+        let newname3 = document.getElementById("newname3").value;
+        let newname4 = document.getElementById("newname4").value;
+        let trueFalse = true;
+        let listName1 = document.getElementById("listName1");
+        let listName2 = document.getElementById("listName2");
+        let listName3 = document.getElementById("listName3");
+        let listName4 = document.getElementById("listName4");
+        if (newname1 == "") {
+            listName1.innerHTML = "ユーザー名が未入力です";
+            listName1.style.color = "red";
+            trueFalse = false;
+            
+        }
+      if (newname2 == "") {
+            listName2.innerHTML = "年齢が未入力です";
+            listName2.style.color = "red";
+            trueFalse = false;
+        } else if (/^[0-9]*$/.test(newname2)) {
+            listName2.textContent = "";
+        } else {
+            listName2.innerHTML = "半角数字で入力してください";
+            listName2.style.color = "red";
+            trueFalse = false;
+        }
+        if (newname4 == "") {
+            listName4.innerHTML = "評価内容が未入力です";
+            listName4.style.color = "red";
+            trueFalse = false;
+        }
+        return trueFalse;
+    }
         </script>
     </body>
 </html>

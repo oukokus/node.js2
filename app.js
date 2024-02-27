@@ -28,7 +28,7 @@ app.use(express.static('assets'));
 
   // ==========ここまでの範囲で書くようにしましょう。==========
   app.post('/', (req, res) => {
-    const sql = "INSERT INTO users SET ?"
+    const sql = "INSERT INTO personas SET ?"
     con.query(sql, req.body, function(err, result, fields) {
       if (err) throw err;
       console.log(result);
@@ -37,7 +37,7 @@ app.use(express.static('assets'));
   });
   
   app.get('/create', (req, res) => {
-    res.sendFile(path.join(__dirname, 'html/form.html'))
+    res.sendFile(path.join(__dirname, 'views/index.ejs'))
   });
   
   con.query(sql, function (err, result, fields) {

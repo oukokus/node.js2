@@ -67,6 +67,12 @@
                 <p><button type="submit" onclick="return buttonClick()"  value="">追加</p>
             </form>
         </div>
+            <!--EX課題01-->
+            <select name="selectEX">
+                <option value="high">評価が高い順</option>
+                <option value="low">評価が低い順</option>
+            </select>
+            <p><input type="button" onclick="btnClickEX()" value="ソート"></p>
         <!--課題01  ブラウザに出力-->
         <table id="table">
             <tr class="trClass">
@@ -138,6 +144,11 @@
                 "</td>" +
                 "<td class='reason'>" +
                 reason +
+                "</td>" +
+                "<td>" +
+           
+
+
                 "</td>" +
                 "</tr>";
         }
@@ -240,4 +251,32 @@
         }
         return trueFalse;
     }
+//EX課題01
+    function btnClickEX() {
+        for (let i = 0; i < userList.length; i++) {
+            let id = userList[i].id;
+            let username = userList[i].username
+            let age = userList[i].age
+            let rating = userList[i].rating
+            let reason = userList[i].reason
+            getTR[i].innerHTML =
+                "<tr>" +
+                "<td class='id'>" +
+                id +
+                "</td>" +
+                "<td class='username'>" +
+                username +
+                "</td>" +
+                "<td class='age'>" +
+                age +
+                "</td>" +
+                "<td class='rating'>" +
+                rating +
+                "</td>" +
+                "<td class='reason'>" +
+                reason +
+                "</td>" +
+                "</tr>";
+        }
+    };
 </script>

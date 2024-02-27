@@ -65,6 +65,7 @@
                 <textarea id="newname4"  type="textarea" name="reason"  placeholder="評価内容"></textarea>
                 <div id="listName4"></div>
                 <p><button type="submit" onclick="return buttonClick()"  value="">追加</p>
+               
             </form>
         </div>
         <!--課題01  ブラウザに出力-->
@@ -83,8 +84,11 @@
                     <td class="age"><%- users[i].age %></td>
                     <td class="rating"><%- users[i].rating %></td>
                     <td class="reason"><%- users[i].reason %></td>
+                    <td><a href="/edit/<%= users[i].id %>">更新</a></td>
                 </tr>
+
                 <% } %>
+
         </table>
     </body>
 </html>

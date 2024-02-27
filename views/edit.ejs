@@ -12,11 +12,11 @@
       名前 <input type="text" name="username" value="<%= user[0].username %>"><br>
       年齢 <input type="text" name="age" value="<%= user[0].age %>"><br>
       評価  <select name="rating">
-        <option value="opt5">評価5</option>
-        <option value="opt4">評価4</option>
-        <option value="opt3">評価3</option>
-        <option value="opt2">評価2</option>
-        <option value="opt1">評価1</option>
+        <option value="<%= user[0].rating %>"">評価5</option>
+        <option value="<%= user[0].rating %>"">評価4</option>
+        <option value="<%= user[0].rating %>"">評価3</option>
+        <option value="<%= user[0].rating %>"">評価2</option>
+        <option value="<%= user[0].rating %>"">評価1</option>
     </select>
    <br>
       コメント <input type="text" name="reason" value="<%= user[0].reason %>"><br>

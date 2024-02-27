@@ -5,7 +5,21 @@
     <title>User Edit</title>
 </head>
 <body>
-
-
+  <!--formの％は全て消した状態で行うか？-->
+  <h1>更新フォーム</h1>
+  <form action="/update/<%= user[0].id %>" method="POST">
+      id <input type="text" name="id" value="<%= user[0].id %>"><br>
+      名前 <input type="text" name="username" value="<%= user[0].username %>"><br>
+      年齢 <input type="text" name="age" value="<%= user[0].age %>"><br>
+      評価  <select name="rating">
+        <option value="<%= user[0].rating %>"">評価5</option>
+        <option value="<%= user[0].rating %>"">評価4</option>
+        <option value="<%= user[0].rating %>"">評価3</option>
+        <option value="<%= user[0].rating %>"">評価2</option>
+        <option value="<%= user[0].rating %>"">評価1</option>
+    </select>
+   <br>
+      コメント <input type="text" name="reason" value="<%= user[0].reason %>"><br>
+      <button type="submit">更新</button>
 </body>
 </html>

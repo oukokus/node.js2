@@ -61,8 +61,8 @@
                 <option value="2">評価2</option>
                 <option value="1">評価1</option>
             </select></p>
-        <p>評価内容</p>
-                <textarea id="newname4"  type="textarea" name="reason"  placeholder="評価内容"></textarea>
+                <p>評価内容</p>
+                <textarea id="newname4" type="textarea" name="reason" placeholder="評価内容"></textarea>
                 <div id="listName4"></div>
                 <p><button type="submit" onclick="return buttonClick()"  value="">追加</p>
             </form>
@@ -75,6 +75,7 @@
                 <th>年齢</th>
                 <th>評価</th>
                 <th>コメント</th>
+                <th>更新</th>
             </tr>
             <% for (let i=0; i <users.length; i++) { %>
                 <tr class="trclass">
@@ -83,6 +84,7 @@
                     <td class="age"><%- users[i].age %></td>
                     <td class="rating"><%- users[i].rating %></td>
                     <td class="reason"><%- users[i].reason %></td>
+                    <td><a href="/edit/<%= users[i].id %>">更新</a></td>
                 </tr>
                 <% } %>
         </table>
@@ -204,23 +206,23 @@
         }
     }
     //課題05 レビューの新規追加機能
-        let newRow = getTable.insertRow(-1);
-        let listName1 = document.getElementById("listName1");
-        let listName2 = document.getElementById("listName2");
-        let listName3 = document.getElementById("listName3");
-        let listName4 = document.getElementById("listName4");
+    let newRow = getTable.insertRow(-1);
+    let listName1 = document.getElementById("listName1");
+    let listName2 = document.getElementById("listName2");
+    let listName3 = document.getElementById("listName3");
+    let listName4 = document.getElementById("listName4");
     function buttonClick() {
         let newname1 = document.getElementById("newname1");
         let newname2 = document.getElementById("newname2");
         let newname3 = document.getElementById("newname3");
         let newname4 = document.getElementById("newname4");
         let trueFalse = true;
-        if (newname1.value =="") {
+        if (newname1.value == "") {
             listName1.innerHTML = "ユーザー名が未入力です";
             listName1.style.color = "red";
             trueFalse = false;
         }
-      if (newname2.value =="") {
+        if (newname2.value == "") {
             listName2.innerHTML = "年齢が未入力です";
             listName2.style.color = "red";
             trueFalse = false;

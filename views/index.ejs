@@ -44,6 +44,28 @@
                     <td id="graphTd40"></td>
                 </tr>
             </table>
+            <!--課題05-->
+            <form action='/' id="newData" class="formData" method=POST>
+                <h2>レビューを入力</h2>
+                <p id="pid1">ユーザー名 :
+    <input id="newname1" type="text" name="username"  placeholder="ユーザー名"></p>
+                <div id="listName1"></div>
+                <p>年齢 : 
+    <input id="newname2" type="text" name="age" placeholder="年齢"></p>
+                <div id="listName2"></div>
+                <p>評価 : 
+            <select name="rating" id="" name="rating" >
+                <option value="5">評価5</option>
+                <option value="4">評価4</option>
+                <option value="3">評価3</option>
+                <option value="2">評価2</option>
+                <option value="1">評価1</option>
+            </select></p>
+        <p>評価内容</p>
+                <textarea id="newname4"  type="textarea" name="reason"  placeholder="評価内容"></textarea>
+                <div id="listName4"></div>
+                <p><button type="submit" onclick="return buttonClick()"  value="">追加</p>
+            </form>
         </div>
         <!--課題01  ブラウザに出力-->
         <table id="table">
@@ -180,5 +202,40 @@
             count3++
             getGraphTd40.innerHTML = count3 + "人"
         }
+    }
+    //課題05 レビューの新規追加機能
+        let newRow = getTable.insertRow(-1);
+        let listName1 = document.getElementById("listName1");
+        let listName2 = document.getElementById("listName2");
+        let listName3 = document.getElementById("listName3");
+        let listName4 = document.getElementById("listName4");
+    function buttonClick() {
+        let newname1 = document.getElementById("newname1");
+        let newname2 = document.getElementById("newname2");
+        let newname3 = document.getElementById("newname3");
+        let newname4 = document.getElementById("newname4");
+        let trueFalse = true;
+        if (newname1.value =="") {
+            listName1.innerHTML = "ユーザー名が未入力です";
+            listName1.style.color = "red";
+            trueFalse = false;
+        }
+      if (newname2.value =="") {
+            listName2.innerHTML = "年齢が未入力です";
+            listName2.style.color = "red";
+            trueFalse = false;
+        } else if (/^[0-9]*$/.test(newname2.value)) {
+            listName2.textContent = "";
+        } else {
+            listName2.innerHTML = "半角数字で入力してください";
+            listName2.style.color = "red";
+            trueFalse = false;
+        }
+        if (newname4.value == "") {
+            listName4.innerHTML = "評価内容が未入力です";
+            listName4.style.color = "red";
+            trueFalse = false;
+        }
+        return trueFalse;
     }
 </script>

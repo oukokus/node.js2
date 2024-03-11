@@ -48,7 +48,6 @@ app.get("/", (req, res) => {
         });
     });
 });
-  
 
 app.get("/edit/:id", (req, res) => {
   const sql = "SELECT * FROM personas WHERE id = ?";
@@ -68,8 +67,6 @@ app.post("/update/:id", (req, res) => {
     res.redirect("/");
   });
 });
-
-
 
 app.get("/:filter", (req, res) => {
   // ソート、絞り込みを選択された場合の処理
@@ -121,5 +118,5 @@ app.get("/:filter", (req, res) => {
         });
     });
 });
-
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+

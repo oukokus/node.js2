@@ -28,25 +28,8 @@
                     <option value="rating:4" <% if(search==="4" ) {%> selected <% } %>>評価４</option>
                     <option value="rating:5" <% if(search==="5" ) {%> selected <% } %>>評価５</option>
                 </select>
-                <!--課題02
-            <div id="selectBox">
-                <select name="select">
-                    <option value="high">評価が高い順</option>
-                    <option value="low">評価が低い順</option>
-                </select>
-                <p><input type="button" onclick="btnClick()" value="ソート"></p>
-                課題03
-                <select name="selectRating">
-                    <option value="opt5">評価5</option>
-                    <option value="opt4">評価4</option>
-                    <option value="opt3">評価3</option>
-                    <option value="opt2">評価2</option>
-                    <option value="opt1">評価1</option>
-                </select>
-                <p><input type="button" onclick="btnClick02()" value="評価を絞り込む"></p>
-            </div>-->
-                <!--課題04-->
             </div>
+                <!--課題04-->
             <table id="graph">
                 <tr id="graphTr">
                     <th>年代</th>
@@ -83,7 +66,7 @@
                 <p>評価内容</p>
                 <textarea id="newname4" type="textarea" name="reason" placeholder="評価内容"></textarea>
                 <div id="listName4"></div>
-                <p><button type="submit" onclick="return buttonClick()"  value="">追加</p>
+                <p><button type="submit" id="btn" onclick="return buttonClick()"  value="">追加</p>
             </form>
         </div>
         <!--課題01  ブラウザに出力-->
@@ -111,6 +94,7 @@
         </table>
     </body>
 </html>
+
 <script type="text/javascript">
     const filteredPersonas = JSON.parse('<%= JSON.stringify(filteredPersonas) %>'.replace(/&#34;/g, '"'));
     // グラフ描画用に全ユーザー分の情報を取得
@@ -121,112 +105,11 @@
     const sortSelect = document.querySelector("#sortSelect")
     // 「絞り込み」のセレクトボックス
     const searchRating = document.querySelector("#searchRating")
-  
     // 並べ替えを選択された場合のソート処理
     sortSelect.addEventListener("change", sortAndSearchSelect)
     // 絞り込みを選択された場合の処理
     searchRating.addEventListener("change", sortAndSearchSelect)
-    const getTR = document.querySelectorAll(".trclasss")
-    console.log(getTR)
 
-    /*
-        並べ替えもしくは絞り込みを選択された場合のメソッド
-    */
-    //課題02 評価値のソート機能
-    //   let getTR = document.getElementsByClassName("trclass")
-    //    let tableRows = reviewArea.rows.length;
-    //    function btnClick() {
-    //        let select = document.querySelector('[name="select"]');
-    //        select.onchange
-    //        if (select.selectedIndex == 0) {
-    //            personasOrg.sort(function (a, b) {
-    //                if (a.rating < b.rating) {
-    //                    return 1;
-    //                } else {
-    //                    return -1;
-    //                }
-    //            })
-    //        } else if (select.selectedIndex == 1) {
-    //            personasOrg.sort(function (a, b) {
-    //                if (a.rating > b.rating) {
-    //                    return 1;
-    //                } else {
-    //                    return -1;
-    //                }
-    //            })
-    //        }
-    //        for (let i = 0; i < personasOrg.length; i++) {
-    //            let id = personasOrg[i].id;
-    //            let username = personasOrg[i].username
-    //            let age = personasOrg[i].age
-    //            let rating = personasOrg[i].rating
-    //            let reason = personasOrg[i].reason
-    //            let update = "<a href='/edit/<%=  personasOrg[0].id %>'>更新</a>"
-    //            getTR[i].innerHTML =
-    //                "<tr>" +
-    //                "<td class='id'>" +
-    //                id +
-    //                "</td>" +
-    //                "<td class='username'>" +
-    //                username +
-    //                "</td>" +
-    //                "<td class='age'>" +
-    //                age +
-    //                "</td>" +
-    //                "<td class='rating'>" +
-    //                rating +
-    //                "</td>" +
-    //                "<td class='reason'>" +
-    //                reason +
-    //                "</td>" +
-    //                "<td>" +
-    //                update
-    //            "</td>" +
-    //                "</tr>";
-    //        }
-    //    };
-    //    //課題03 評価値の絞り込み機能
-    //    function btnClick02() {
-    //        let selectRating = document.querySelector('[name="selectRating"]');
-    //        selectRating.onchange
-    //        for (i = 0; i < personasOrg.length; i++) {
-    //            if (selectRating.selectedIndex == 0) {
-    //                if (personasOrg[i].rating == 5) {
-    //                    getTR[i].style.display = "";
-    //                } else {
-    //                    getTR[i].style.display = "none";
-    //                }
-    //            }
-    //            else if (selectRating.selectedIndex == 1) {
-    //                if (personasOrg[i].rating == 4) {
-    //                    getTR[i].style.display = "";
-    //                } else {
-    //                    getTR[i].style.display = "none";
-    //                }
-    //            }
-    //            else if (selectRating.selectedIndex == 2) {
-    //                if (personasOrg[i].rating == 3) {
-    //                    getTR[i].style.display = "";
-    //                } else {
-    //                    getTR[i].style.display = "none";
-    //                }
-    //            }
-    //            else if (selectRating.selectedIndex == 3) {
-    //                if (personasOrg[i].rating == 2) {
-    //                    getTR[i].style.display = "";
-    //                } else {
-    //                    getTR[i].style.display = "none";
-    //                }
-    //            }
-    //            else if (selectRating.selectedIndex == 4) {
-    //                if (personasOrg[i].rating == 1) {
-    //                    getTR[i].style.display = "";
-    //                } else {
-    //                    getTR[i].style.display = "none";
-    //                }
-    //            }
-    //        }
-    //    }
     //課題04 年代毎のグラフ作成
     let getGraphTd20 = document.getElementById("graphTd20")
     let getGraphTd30 = document.getElementById("graphTd30")
@@ -291,15 +174,12 @@
         let search = ""
         // ソートの値
         let order = ""
-          
         // ソートに選択された値を検索
         for (option of sortSelect.options) {
             if (option.selected && option.value !== "") {
                 filterObj["order"] = option.value
-             
             }
         }
-        
         // 絞り込みに選択された値を検索
         for (option of searchRating.options) {
             if (option.selected && option.value !== "") {
@@ -316,7 +196,4 @@
         console.log(res) 
         location.assign(`/${res}`)
     }
-    /*
-*/
-
 </script>

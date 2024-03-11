@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>User Edit</title>
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>商品レビュー</h1>
+    <!--課題02-->
+    <div id="rating-page">
+        <div id="selectBox">
+            <select name="select">
+                <option value="high">評価が高い順</option>
+                <option value="low">評価が低い順</option>
+            </select>
+            <p><input type="button" onclick="btnClick()" value="ソート"></p>
+            <!--課題03-->
+            <select name="selectRating">
+                <option value="opt5">評価5</option>
+                <option value="opt4">評価4</option>
+                <option value="opt3">評価3</option>
+                <option value="opt2">評価2</option>
+                <option value="opt1">評価1</option>
+            </select>
+            <p><input type="button" onclick="btnClick02()" value="評価を絞り込む"></p>
+        </div>
+        <!--課題04-->
+        <table id="graph">
+            <tr id="graphTr">
+                <th>年代</th>
+                <th>人数</th>
+            </tr>
+            <tr id="graphTr20">
+                <td>20代</td>
+                <td id="graphTd20"></td>
+            </tr>
+            <tr id="graphTr30">
+                <td>30代</td>
+                <td id="graphTd30"></td>
+            </tr>
+            <tr id="graphTr40">
+                <td>40代</td>
+                <td id="graphTd40"></td>
+            </tr>
+        </table>
+        <!--課題05-->
+        <form action='/' id="newData" class="formData" method=POST>
+            <h2>レビューを入力</h2>
+            <p id="pid1">ユーザー名 :
+<input id="newname1" type="text" name="username"  placeholder="ユーザー名"></p>
+            <div id="listName1"></div>
+            <p>年齢 : 
+<input id="newname2" type="text" name="age" placeholder="年齢"></p>
+            <div id="listName2"></div>
+            <p>評価 : 
+        <select name="rating" id="" name="rating" >
+            <option value="5">評価5</option>
+            <option value="4">評価4</option>
+            <option value="3">評価3</option>
+            <option value="2">評価2</option>
+            <option value="1">評価1</option>
+        </select></p>
+            <p>評価内容</p>
+            <textarea id="newname4" type="textarea" name="reason" placeholder="評価内容"></textarea>
+            <div id="listName4"></div>
+            <p><button type="submit" onclick="return buttonClick()"  value="">追加</p>
+        </form>
+    </div>
+
+    <!--EX課題02-->
+    <form action="/" method="GET">
+                <select name="selectRatingEX">
+                    <option value="opt5">評価5</option>
+                    <option value="opt4">評価4</option>
+                    <option value="opt3">評価3</option>
+                    <option value="opt2">評価2</option>
+                    <option value="opt1">評価1</option>
+                </select>
+               
+            
+                <p><input type="submit" onclick="btnClick02EX()" value="評価を絞り込む"></p>
+    </form>
+            </div>
+    <!--課題01  ブラウザに出力-->
+    <table id="table">
+        <tr class="trClass">
+            <th>id</th>
+            <th>名前</th>
+            <th>年齢</th>
+            <th>評価</th>
+            <th>コメント</th>
+            <th>更新</th>
+        </tr>
+        <% for (let i=0; i <users.length; i++) { %>
+            <tr class="trclass">
+                <td class="id"><%- users[i].id %></td>
+                <td class="username"><%- users[i].username %></td>
+                <td class="age"><%- users[i].age %></td>
+                <td class="rating"><%- users[i].rating %></td>
+                <td class="reason"><%- users[i].reason %></td>
+                <td><a href="/edit/<%= users[i].id %>">更新</a></td>
+            </tr>
+            <% } %>
+    </table>
+</body>
+</html>
